@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+.masthead {
+  /* padding-top: calc(6rem + 74px); */
+  padding-top: 55px;
+  padding-bottom: 3rem;
+}
+.masthead .masthead-heading {
+
+font-family: Abhaya Libre ExtraBold;
+font-style: normal;
+font-weight: 800;
+font-size: 55px;
+line-height: 65px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.masthead .masthead-avatar {
+  width: 15rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 992px) {
+  .masthead {
+    /* padding-top: calc(6rem + 104px); */
+    padding-bottom: 3rem;
   }
+ 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg-yellow{
+  background-color: #FFC700 !important;
+}
+.title-ways{
+  /* WaysFood */
+
+/* position: absolute;
+width: 80px;
+height: 28px;
+left: 65px;
+top: 26px; */
+
+font-family: Barlow Condensed;
+font-style: italic;
+font-weight: 500;
+font-size: 23px;
+line-height: 28px;
+/* identical to box height */
+letter-spacing: 0.01em;
+
+color: #000000;
+}
+.text-brown{
+  color: #433434 !important;  
+}
+.text-yellow{
+  color: #FFC700 !important;
+}
+.btn-brown{
+background: #433434;
+border-radius: 5px;
+color: #fff;
+}
+.btn-brown:hover {
+  color: #fff;
+  background-color: #6d5959;
+  border-color: #3a2c2c;
+}
+.btn-brown:focus, .btn-brown.focus {
+  color: #fff;
+  background-color: #6d5959;
+  border-color: #3a2c2c;
+  box-shadow: 0 0 0 0.2rem rgba(61, 23, 27, 0.5);
+}
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #2c3e50;
+  border-radius: 1rem;
+  border-color: #2c3e50 !important;
+}
+.divider-custom .divider-custom-line:first-child {
+  margin-right: 1rem;
+}
+.divider-custom .divider-custom-line:last-child {
+  margin-left: 1rem;
+}
+.divider-custom .divider-custom-icon {
+  color: #2c3e50 !important;
+  font-size: 2rem;
+}
+.divider-custom.divider-light .divider-custom-line {
+  background-color: #fff;
+}
+.divider-custom.divider-light .divider-custom-icon {
+  color: #fff !important;
 }
 
-.App-link {
-  color: #61dafb;
+/* login register */
+.modal-wf{
+background: #FFFFFF;
+border-radius: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-bg{
+  background: rgba(210, 210, 210, 0.25);
+  border: 2px solid #D2D2D2;  
+}
+.input-bg:focus{
+  border: 2px solid #331805;  
 }
