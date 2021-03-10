@@ -31,7 +31,7 @@ function Login(props) {
                 <Button variant="brown" className="btn btn-block btn-round">Login</Button>
                 </Form>
                 
-                <div className="text-center text-muted delimiter mt-2">Don't have an account ? klick<a href="#" class="text-brown"> here</a>.</div>
+                <div className="text-center text-muted delimiter mt-2">Don't have an account ? klick<a href="#" className="text-brown "> here</a>.</div>
             </div>
              
         </Modal.Body>
