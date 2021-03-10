@@ -1,13 +1,8 @@
 import { Button, Form, Modal } from "react-bootstrap";
 
-function Login(props) {
+function Register(props) {
 	return (
 		<Modal {...props} size="sm" centered>
-			{/* <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header> */}
 			<Modal.Body>
 				<div className="form-title mb-3">
 					<h4 className="text-yellow">Login</h4>
@@ -21,7 +16,6 @@ function Login(props) {
 								placeholder="Email"
 							/>
 						</Form.Group>
-
 						<Form.Group controlId="formBasicPassword">
 							<Form.Control
 								type="password"
@@ -29,25 +23,49 @@ function Login(props) {
 								placeholder="Password"
 							/>
 						</Form.Group>
+						<Form.Group>
+							<Form.Control
+								type="text"
+								className="form-control input-bg"
+								placeholder="Full Name"
+							/>
+						</Form.Group>
+						<Form.Group>
+							<Form.Control
+								type="text"
+								className="form-control input-bg"
+								placeholder="Gender"
+							/>
+						</Form.Group>
+						<Form.Group>
+							<Form.Control
+								type="text"
+								className="form-control input-bg"
+								placeholder="Phone"
+							/>
+						</Form.Group>
+						<Form.Group>
+							<Form.Control as="select" className="input-bg">
+								<option>As User</option>
+								<option>As Partner</option>
+							</Form.Control>
+						</Form.Group>
 						<Button variant="brown" className="btn btn-block btn-round">
 							Login
 						</Button>
 					</Form>
 
-					<div className="text-center text-muted delimiter mt-2">
-						Don't have an account ? klick {"\u00A0"}
+					<div className="text-center text-muted delimiter mt-2 ">
+						Already have an account ? klick {"\u00A0"}
 						<a href="#" className="font-weight-bold text-muted">
-							{" "}
 							here
 						</a>
 						.
 					</div>
 				</div>
 			</Modal.Body>
-			{/* <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer> */}
 		</Modal>
 	);
 }
-export default Login;
+
+export default Register;
