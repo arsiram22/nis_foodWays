@@ -1,13 +1,8 @@
 import { Button, Form, Modal } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 function Login(props) {
 	return (
 		<Modal {...props} size="sm" centered>
-			{/* <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header> */}
 			<Modal.Body>
 				<div className="form-title mb-3">
 					<h4 className="text-yellow">Login</h4>
@@ -35,7 +30,7 @@ function Login(props) {
 					</Form>
 
 					<div className="text-center text-muted delimiter mt-2">
-						Don't have an account ? klick {"\u00A0"}
+						Don't have an account ? klick
 						<a href="#" className="font-weight-bold text-muted">
 							{" "}
 							here
@@ -44,9 +39,6 @@ function Login(props) {
 					</div>
 				</div>
 			</Modal.Body>
-			{/* <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer> */}
 		</Modal>
 	);
 }
