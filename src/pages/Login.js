@@ -31,10 +31,10 @@ function Login(props) {
 
 					<div className="text-center text-muted delimiter mt-2">
 						Don't have an account ? klick
-						<a href="#" className="font-weight-bold text-muted">
+						<Link to="#" className="font-weight-bold text-muted">
 							{" "}
 							here
-						</a>
+						</Link>
 						.
 					</div>
 				</div>

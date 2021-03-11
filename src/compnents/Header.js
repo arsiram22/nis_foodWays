@@ -22,7 +22,7 @@ function Header() {
 						</div>
 					</div>
 					<div className="col-sm-5 align-items-center mx-0 px-0 ">
-						<img src={pizza} className="pizza ml-0" />
+						<img src={pizza} className="pizza ml-0" alt="pizza" />
 					</div>
 				</div>
 			</div>

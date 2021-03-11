@@ -16,20 +16,20 @@ const NavbarComponent = () => {
 			<Navbar.Collapse id="basic-navbar-nav" className=""></Navbar.Collapse>
 			<Nav>
 				<li className="nav-link">
-					<a
+					<button
 						className="btn btn-brown btn-sm"
 						onClick={() => setModalLogin(true)}
 					>
 						Login
-					</a>
+					</button>
 				</li>
 				<li className="nav-link">
-					<a
+					<button
 						className="btn btn-brown btn-sm"
 						onClick={() => setModalRegister(true)}
 					>
 						Register
-					</a>
+					</button>
 				</li>
 			</Nav>
 			<Login show={modalLogin} onHide={() => setModalLogin(false)} />

@@ -1,5 +1,6 @@
 import Header from "../compnents/Header";
-import Card from "../compnents/Card";
+import { CardListItem, CardPopular } from "../compnents/Card";
+import { restaurants } from "../compnents/Data";
 function Home() {
 	return (
 		<div>
@@ -7,10 +8,18 @@ function Home() {
 			<div className="container">
 				<div className="row py-3">
 					<div className="my-2 col-12">
-						<h2>New feature</h2>
+						<h2>Popular Restaurant</h2>
 					</div>
-					<Card />
-					<Card />
+					{restaurants.map((data) => {
+						if (data.popular === true) {
+							return <CardPopular data={data} key={data.id} />;
+						}
+					})}
+				</div>
+				<div className="row py-3">
+					<div className="my-2 col-12">
+						<h2>Restaurant Near You</h2>
+					</div>
 				</div>
 			</div>
 		</div>

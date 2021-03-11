@@ -1,4 +1,5 @@
 import { Button, Form, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Register(props) {
 	return (
@@ -57,9 +58,9 @@ function Register(props) {
 
 					<div className="text-center text-muted delimiter mt-2 ">
 						Already have an account ? klick {"\u00A0"}
-						<a href="#" className="font-weight-bold text-muted">
+						<Link to="#" className="font-weight-bold text-muted">
 							here
-						</a>
+						</Link>
 						.
 					</div>
 				</div>

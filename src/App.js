@@ -1,14 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useState } from "react";
 import Nav from "./compnents/Nav";
 import Home from "./pages/Home";
 
 function App() {
-	const [modalLogin, setModalLogin] = useState(false);
-	const [modalRegister, setModalRegister] = useState(false);
-
 	return (
 		<Router>
 			<Nav />
