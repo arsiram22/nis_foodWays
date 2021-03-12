@@ -1,12 +1,8 @@
-import { Navbar, Nav, Image } from "react-bootstrap";
-import { useState } from "react";
+import { Navbar, Image } from "react-bootstrap";
 import logo from "../compnents/img/logo.svg";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import { LoginRegister, User, Partner } from "./Menu";
 
 const NavbarComponent = () => {
-	const [modalLogin, setModalLogin] = useState(false);
-	const [modalRegister, setModalRegister] = useState(false);
 	return (
 		<Navbar bg="dark " className="fixed-top bg-yellow">
 			<Navbar.Brand href="#home" className="title-ways text-brown">
@@ -14,26 +10,10 @@ const NavbarComponent = () => {
 				<Image src={logo} alt="WF" className="ml-2" />
 			</Navbar.Brand>
 			<Navbar.Collapse id="basic-navbar-nav" className=""></Navbar.Collapse>
-			<Nav>
-				<li className="nav-link">
-					<button
-						className="btn btn-brown btn-sm"
-						onClick={() => setModalLogin(true)}
-					>
-						Login
-					</button>
-				</li>
-				<li className="nav-link">
-					<button
-						className="btn btn-brown btn-sm"
-						onClick={() => setModalRegister(true)}
-					>
-						Register
-					</button>
-				</li>
-			</Nav>
-			<Login show={modalLogin} onHide={() => setModalLogin(false)} />
-			<Register show={modalRegister} onHide={() => setModalRegister(false)} />
+			<LoginRegister />
+			<User />
+
+			<Partner />
 		</Navbar>
 	);
 };
