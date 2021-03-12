@@ -8,7 +8,7 @@ import user from "./img/user.svg";
 import product from "./img/product.svg";
 import logout from "./img/logout.svg";
 
-export const LoginRegisterModal = () => {
+export const LoginRegister = () => {
 	const [modalLogin, setModalLogin] = useState(false);
 	const [modalRegister, setModalRegister] = useState(false);
 	return (
@@ -36,21 +36,6 @@ export const LoginRegisterModal = () => {
 		</div>
 	);
 };
-// export const LoginRegister = () => {
-// 	const location = useLocation();
-// 	return (
-// 		<div>
-// 			<Nav>
-// 				<li className="nav-link">
-// 					<link to></link>
-// 				</li>
-// 				<li className="nav-link">
-// 					<link></link>
-// 				</li>
-// 			</Nav>
-// 		</div>
-// 	);
-// };
 export const User = () => {
 	return (
 		<Nav>
