@@ -144,3 +144,11 @@ body {
 	height: auto;
 	margin-right: 4px;
 }
+.btn-yellow {
+	background: #ffc700;
+	border-radius: 5px;
+	color: #fff;
+}
+.mt-custom {
+	margin-top: 80px !important;
+}
