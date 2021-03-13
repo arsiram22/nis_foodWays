@@ -5,6 +5,32 @@ export const restaurants = [
 		logo: "/img/bk.svg",
 		name: "Burger King",
 		distance: 2.2,
+		product: [
+			{
+				id: 1,
+				partnerid: 1,
+				name: "HP Thin",
+				price: 25000,
+				logo:
+					"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+			},
+			{
+				id: 2,
+				partnerid: 1,
+				name: "Aourus ROG",
+				price: 25000,
+				logo:
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXouY4ZZXvwEAM7ojzbl3Be1Hzvw5JDAuwYg&usqp=CAU",
+			},
+			{
+				id: 3,
+				partnerid: 1,
+				name: "Msi",
+				price: 25000,
+				logo:
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaa6-CSoL1C8nHlKyozAZowyT8A7NINkXS8g&usqp=CAU",
+			},
+		],
 	},
 	{
 		id: 2,

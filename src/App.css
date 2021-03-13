@@ -118,12 +118,10 @@ body {
 	line-height: 19px;
 }
 /* add charret to dropdown */
-.menu {
+
+.dropdown-menu-right:before {
 	position: absolute;
 	font-family: Avenir;
-}
-.menu:before {
-	position: absolute;
 	top: -10px;
 	right: 24px;
 	content: "";
@@ -147,8 +145,66 @@ body {
 .btn-yellow {
 	background: #ffc700;
 	border-radius: 5px;
-	color: #fff;
+	font: Avenir;
+}
+.btn-yellow:hover {
+	background-color: #ffd900;
+	border-color: #8a7015;
+}
+.btn-yellow:focus,
+.btn-yellow.focus {
+	box-shadow: 0 0 0 0.2rem rgba(255, 251, 0, 0.411);
 }
 .mt-custom {
 	margin-top: 80px !important;
 }
+.profile-text {
+	font: Avenir;
+}
+.profile-text h5 {
+	font-family: Avenir;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 18px;
+	line-height: 25px;
+	color: #613d2b;
+}
+
+[type="file"] {
+	height: 0;
+	overflow: hidden;
+	width: 0;
+}
+
+[type="file"] + label.custom {
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: inherit;
+	outline: none;
+	position: relative;
+	transition: all 0.3s;
+	background: rgba(210, 210, 210, 0.25);
+	border: 2px solid #766c6c;
+	width: 100%;
+	height: calc(1.5em + 0.75rem + 2px);
+	text-align: center;
+	padding: 0.375rem 0.75rem;
+}
+[type="file"] + label.custom:hover {
+	background-color: #43343498;
+}
+/* .imghover:hover {
+	-webkit-filter: grayscale(1) invert(1);
+	filter: grayscale(1) invert(1);
+} */
+input {
+	font-family: Avenir;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.table-bordered-black td,
+.table-bordered-black th {
+	border: 1px solid #000 !important;
+}
+/* .table-bordered-black td, */

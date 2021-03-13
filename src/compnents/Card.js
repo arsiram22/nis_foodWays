@@ -73,7 +73,7 @@ export const CardNearyou = (props) => {
 };
 export const CardProduct = (props) => {
 	const history = useHistory();
-	const { name, logo, id, harga } = props.data;
+	const { name, logo, id, price } = props.data;
 	return (
 		<div className="col-md-3 mb-3">
 			<div
@@ -94,15 +94,22 @@ export const CardProduct = (props) => {
 					/>
 				</div>
 				<div className="card-body ">
-					<h5
+					<div
 						style={{
 							height: "60px",
 						}}
 					>
-						{name}
-					</h5>
-					<small className="text-danger">{harga}</small>
-					<Button variant="yellow" className="btn btn-block btn-round">
+						<h5
+							style={{
+								fontSize: "15px",
+								fontWeight: "600",
+							}}
+						>
+							{name}
+						</h5>
+					</div>
+					<small className="text-danger">{price}</small>
+					<Button variant="yellow" className="btn btn-block btn-round mt-2">
 						Order
 					</Button>
 				</div>

@@ -1,10 +1,11 @@
 import Header from "../compnents/Header";
 import { CardNearyou, CardPopular } from "../compnents/Card";
 import { restaurants } from "../compnents/Data";
+import { Dropdown } from "react-bootstrap";
 // import Dropdowns from "../compnents/Dropdowns";
 function Home() {
 	return (
-		<div>
+		<>
 			<Header />
 			<div className="container">
 				{/* <Dropdown /> */}
@@ -29,7 +30,7 @@ function Home() {
 					})}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

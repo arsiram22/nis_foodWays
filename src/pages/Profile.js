@@ -1,13 +1,81 @@
+import { Link } from "react-router-dom";
+
 const Profile = () => {
 	return (
 		<>
 			<div className="container pt-3">
 				<div className="row py-3 mt-3 mt-custom">
 					<div className="my-2 col ">
-						<h2 className="col-12">Menu</h2>
+						<h2>Profile</h2>
+						<div className="row">
+							<div className="col-5">
+								<img
+									className="img-fluid"
+									src="profile.jpg"
+									alt="profile"
+									style={{
+										objectFit: "cover",
+										width: "100%",
+									}}
+								/>
+								<Link
+									to="/profile/edit"
+									className="btn btn-block btn-brown  btn-sm mt-4"
+								>
+									Edit Profile
+								</Link>
+							</div>
+							<div className="col-7 profile-text">
+								<h5>Full Name</h5>
+								<p>Andi</p>
+								<br />
+								<h5>Email</h5>
+								<p>andigans@gmail.com</p>
+								<br />
+								<h5>Phone</h5>
+								<p>087646546546</p>
+								<br />
+							</div>
+						</div>
 					</div>
-					<div className="my-2 col ">
-						<h2>Menu</h2>
+					<div className="my-2 col-5 ">
+						<h2>History Transaction</h2>
+						<div className="card text-left">
+							<div className="card-body row mx-0">
+								<div className="col px-1">
+									<h5>Title</h5>
+									<p>
+										Saturday,<small>12 march 2021</small>
+									</p>
+									<p className="mb-0 mt-3" style={{ color: "#974A4A" }}>
+										Total : RP 45.000
+									</p>
+								</div>
+								<div className="col-5 px-1">
+									<div className="col-12 row px-0">
+										<h5>WaysFood</h5>
+										<img
+											src="logo512.png"
+											alt="WF"
+											className="ml-2"
+											style={{
+												objectFit: "cover",
+												width: "25px",
+												height: "25px",
+											}}
+										/>
+									</div>
+									<div className="col-12 row px-0">
+										<Link
+											to=""
+											className="btn btn-block btn-outline-success btn-sm mt-4"
+										>
+											Succes
+										</Link>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

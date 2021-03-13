@@ -1,12 +1,14 @@
 import { Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { useState } from "react";
+
 import keranjang from "./img/keranjang.svg";
 import user from "./img/user.svg";
 import product from "./img/product.svg";
 import logout from "./img/logout.svg";
+import { Link } from "react-router-dom";
 
 export const LoginRegister = () => {
 	const [modalLogin, setModalLogin] = useState(false);
@@ -38,75 +40,70 @@ export const LoginRegister = () => {
 };
 export const User = () => {
 	return (
-		<Nav>
-			<li className="nav-item">
-				<Link href="#" className="nav-link">
-					<img src={keranjang} alt="" />
-					{/* <!-- <span className="badge badge-pill badge-danger">1</span></a> --> */}
+		<>
+			<Nav.Link as={Link} to="/cart">
+				<img src={keranjang} alt="" className="thumbnail-image" />
+				{/* <!-- <span className="badge badge-pill badge-danger">1</span></a> --> */}
+			</Nav.Link>
+			<NavDropdown
+				// eventKey={1}
+				title={
+					<div className="pull-left">
+						<img
+							className="thumbnail-image rounded-circle"
+							src="https://ui-avatars.com/api/?name=aa"
+							alt="user pic"
+							width="40"
+							height="40"
+						/>
+					</div>
+				}
+				id="basic-nav-dropdown"
+				alignRight
+				// className="dropdown-menu-right menu"
+			>
+				<Link to="/profile" className="dropdown-item">
+					<img src={user} alt="" className="dropdown-logo " /> Profile
 				</Link>
-			</li>
-			<li className="nav-item dropdown">
-				<Link
-					className="nav-item nav-link dropdown-toggle mr-md-2"
-					href="#"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-				>
-					<img
-						src="https://ui-avatars.com/api/?name=aa"
-						alt="us"
-						width="40"
-						height="40"
-						className="rounded-circle"
-					/>
+
+				<NavDropdown.Divider />
+				<Link to="/logout" className="dropdown-item">
+					<img src={logout} alt="" className="dropdown-logo " /> logout
 				</Link>
-				<div className="dropdown-menu dropdown-menu-right menu">
-					<NavDropdown.Item href="#action/3.1">
-						<img src={user} alt="" className="dropdown-logo " /> Profile
-					</NavDropdown.Item>
-					<NavDropdown.Divider />
-					<NavDropdown.Item href="#action/3.4">
-						<img src={logout} alt="" className="dropdown-logo " /> logout
-					</NavDropdown.Item>
-				</div>
-			</li>
-		</Nav>
+			</NavDropdown>
+		</>
 	);
 };
 
 export const Partner = () => {
 	return (
-		<Nav>
-			<li className="nav-item dropdown">
-				<Link
-					className="nav-item nav-link dropdown-toggle mr-md-2"
-					href="#"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-				>
+		<NavDropdown
+			// eventKey={1}
+			title={
+				<div className="pull-left">
 					<img
+						className="thumbnail-image rounded-circle"
 						src="https://ui-avatars.com/api/?name=aa"
-						alt="US"
+						alt="user pic"
 						width="40"
 						height="40"
-						className="rounded-circle"
 					/>
-				</Link>
-				<div className="dropdown-menu dropdown-menu-right menu">
-					<NavDropdown.Item href="#action/3.1">
-						<img src={user} alt="" className="dropdown-logo " /> Profile Partner
-					</NavDropdown.Item>
-					<NavDropdown.Item href="#action/3.1">
-						<img src={product} alt="" className="dropdown-logo " /> Add product
-					</NavDropdown.Item>
-					<NavDropdown.Divider />
-					<NavDropdown.Item href="#action/3.4">
-						<img src={logout} alt="" className="dropdown-logo " /> logout
-					</NavDropdown.Item>
 				</div>
-			</li>
-		</Nav>
+			}
+			id="basic-nav-dropdown"
+			alignRight
+			// className="dropdown-menu-right menu"
+		>
+			<Link to="/profile" className="dropdown-item">
+				<img src={user} alt="" className="dropdown-logo " /> Profile Partner
+			</Link>
+			<Link to="/product/add" className="dropdown-item">
+				<img src={product} alt="" className="dropdown-logo " /> Add product
+			</Link>
+			<NavDropdown.Divider />
+			<Link to="/logout" className="dropdown-item">
+				<img src={logout} alt="" className="dropdown-logo " /> logout
+			</Link>
+		</NavDropdown>
 	);
 };
