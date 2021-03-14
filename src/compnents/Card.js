@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 
 export const CardPopular = (props) => {
@@ -71,73 +70,50 @@ export const CardNearyou = (props) => {
 		</div>
 	);
 };
-export const CardProduct = (props) => {
-	const history = useHistory();
-	const { name, logo, id, price } = props.data;
+
+export const Card = ({ product, fromProduct, addProductToCart }) => {
+	const { name, logo, price } = product;
+
 	return (
-		<div className="col-md-3 mb-3">
-			<div
-				className="card mb-3"
-				// onClick={() => {
-				// 	history.push(`/market/${id}`);
-				// }}
-			>
-				<div className="py-2 px-2">
-					<img
-						src={logo}
-						alt={name}
+		<div className="mb-3 card">
+			<div className="py-2 px-2">
+				<img
+					src={logo}
+					alt={name}
+					style={{
+						height: "140px",
+						objectFit: "cover",
+						width: "100%",
+					}}
+				/>
+			</div>
+			<div className="card-body ">
+				<div
+					style={{
+						height: "60px",
+					}}
+				>
+					<h5
 						style={{
-							height: "140px",
-							objectFit: "cover",
-							width: "100%",
-						}}
-					/>
-				</div>
-				<div className="card-body ">
-					<div
-						style={{
-							height: "60px",
+							fontSize: "15px",
+							fontWeight: "600",
 						}}
 					>
-						<h5
-							style={{
-								fontSize: "15px",
-								fontWeight: "600",
-							}}
+						{name}
+					</h5>
+				</div>
+				<small className="text-danger">{price}</small>
+				<div className=" d-flex justify-content-center align-items-center flex-column">
+					{fromProduct && (
+						<button
+							onClick={() => addProductToCart(product)}
+							className="mt-2 btn btn-yellow btn-block"
 						>
-							{name}
-						</h5>
-					</div>
-					<small className="text-danger">{price}</small>
-					<Button variant="yellow" className="btn btn-block btn-round mt-2">
-						Order
-					</Button>
+							Add To Cart
+						</button>
+					)}
 				</div>
 			</div>
 		</div>
 	);
 };
-export const CardListItem = (props) => {
-	return (
-		<li>
-			<div
-				className="card-container"
-				style={{
-					width: "50%",
-					border: "solid 3px #d3d3d3",
-					margin: "10px auto",
-				}}
-			>
-				<p>
-					<strong>{props.character.name}</strong>
-				</p>
-				<p>{props.character.name}</p>
-				<p>{props.character.name}</p>
-			</div>
-		</li>
-	);
-};
-
-function Card() {
-	return <div></div>;
-}

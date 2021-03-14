@@ -1,8 +1,32 @@
-import { Button, Form, Modal } from "react-bootstrap";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-function Login(props) {
+
+import { AuthContext } from "../contexts/authContext";
+
+import { Button, Form, Modal } from "react-bootstrap";
+
+function Login() {
+	const [state, dispatch] = useContext(AuthContext);
+	const LoginUser = () => {
+		dispatch({
+			type: "LOGIN",
+		});
+	};
+
+	const handleClose = () => {
+		dispatch({
+			type: "MODAL_LOGIN_CLOSE",
+		});
+	};
+	const handleOpenRegister = () => {
+		handleClose();
+		dispatch({
+			type: "MODAL_REGISTER_OPEN",
+		});
+	};
+	// console.log("login", state);
 	return (
-		<Modal {...props} size="sm" centered>
+		<Modal show={state.modalLogin} onHide={handleClose} size="sm" centered>
 			<Modal.Body>
 				<div className="form-title mb-3">
 					<h4 className="text-yellow">Login</h4>
@@ -24,15 +48,22 @@ function Login(props) {
 								placeholder="Password"
 							/>
 						</Form.Group>
-						<Button variant="brown" className="btn btn-block btn-round">
+						<Button
+							variant="brown"
+							className="btn btn-block btn-round"
+							onClick={LoginUser}
+						>
 							Login
 						</Button>
 					</Form>
 
 					<div className="text-center text-muted delimiter mt-2">
 						Don't have an account ? klick
-						<Link to="#" className="font-weight-bold text-muted">
-							{" "}
+						<Link
+							to="#"
+							onClick={handleOpenRegister}
+							className="font-weight-bold text-muted"
+						>
 							here
 						</Link>
 						.

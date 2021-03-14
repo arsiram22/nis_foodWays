@@ -1,67 +1,62 @@
 import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
 import { KeranjangContextProvider } from "./contexts/keranjangContext";
+import { AuthContextProvaider } from "./contexts/authContext";
+import { UserContextProvider } from "./contexts/userContext";
 
-import Modals from "./compnents/Modals";
+import Navigation from "./compnents/Nav";
 
-import Home from "./pages/Home";
 import Test from "./pages/Test";
+import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import EditProfile from "./pages/EditProfile";
 import AddProduct from "./pages/AddProduct";
 import Transaction from "./pages/Transaction";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 export default function MasterRoute() {
-	// const location = useLocation();
-	// const background = location.state && location.state.background;
-
 	return (
-		<KeranjangContextProvider>
-			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<Route exact path="/profile">
-					<Profile />
-				</Route>
-				<Route exact path="/Cart">
-					<Cart />
-				</Route>
-				<Route exact path="/product">
-					<Product />
-				</Route>
-				<Route exact path="/product/add">
-					<AddProduct />
-				</Route>
-				<Route exact path="/profile/edit">
-					<EditProfile />
-				</Route>
-				<Route exact path="/transaction">
-					<Transaction />
-				</Route>
-				<Route exact path="/market/:id">
-					<Product />
-				</Route>
-			</Switch>
-			{/* <ModalRoute /> */}
-		</KeranjangContextProvider>
+		<UserContextProvider>
+			<AuthContextProvaider>
+				<KeranjangContextProvider>
+					<Navigation />
+					<Switch>
+						<Route exact path="/">
+							<Home />
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
+						</Route>
+						<Route exact path="/Cart">
+							<Cart />
+						</Route>
+						{/* <Route exact path="/product">
+							<Product />
+						</Route> */}
+						<Route exact path="/product/add">
+							<AddProduct />
+						</Route>
+						<Route exact path="/profile/edit">
+							<EditProfile />
+						</Route>
+						<Route exact path="/transaction">
+							<Transaction />
+						</Route>
+						<Route exact path="/market/:id">
+							<Product />
+						</Route>
+						<Route exact path="/test">
+							<Test />
+						</Route>
+					</Switch>
+					<Register />
+					<Login />
+				</KeranjangContextProvider>
+			</AuthContextProvaider>
+		</UserContextProvider>
 	);
 }
-
-// function ModalRoute() {
-// 	const location = useLocation();
-// 	const background = location.state && location.state.background;
-
-// 	return (
-// 		<>
-// 			<Switch location={background || location}>
-// 				<Route path="/" component={Home} />
-// 				<Route path="/test" component={Test} />
-// 			</Switch>
-
-// 			{background && <Route path="/login/:name" children={<Modals />} />}
-// 		</>
-// 	);
-// }

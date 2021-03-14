@@ -1,49 +1,69 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Nav, NavDropdown } from "react-bootstrap";
-import { useState } from "react";
 
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import { AuthContext } from "../contexts/authContext";
+import { KeranjangContext } from "../contexts/keranjangContext";
 
 import keranjang from "./img/keranjang.svg";
 import user from "./img/user.svg";
 import product from "./img/product.svg";
 import logout from "./img/logout.svg";
-import { Link } from "react-router-dom";
+
+const Menu = () => {
+	return (
+		<>
+			<LoginRegister />
+		</>
+	);
+};
+
+export default Menu;
 
 export const LoginRegister = () => {
-	const [modalLogin, setModalLogin] = useState(false);
-	const [modalRegister, setModalRegister] = useState(false);
+	const [state, dispatch] = useContext(AuthContext);
+	const handleOpenLogin = () => {
+		dispatch({
+			type: "MODAL_LOGIN_OPEN",
+		});
+	};
+	const handleOpenRegister = () => {
+		dispatch({
+			type: "MODAL_REGISTER_OPEN",
+		});
+	};
 	return (
 		<div>
 			<Nav>
 				<li className="nav-link">
-					<button
-						className="btn btn-brown btn-sm"
-						onClick={() => setModalLogin(true)}
-					>
+					<button className="btn btn-brown btn-sm" onClick={handleOpenLogin}>
 						Login
 					</button>
 				</li>
 				<li className="nav-link">
-					<button
-						className="btn btn-brown btn-sm"
-						onClick={() => setModalRegister(true)}
-					>
+					<button className="btn btn-brown btn-sm" onClick={handleOpenRegister}>
 						Register
 					</button>
 				</li>
 			</Nav>
-			<Login show={modalLogin} onHide={() => setModalLogin(false)} />
-			<Register show={modalRegister} onHide={() => setModalRegister(false)} />
 		</div>
 	);
 };
+
 export const User = () => {
+	const [state, dispatch] = useContext(KeranjangContext);
+
 	return (
 		<>
 			<Nav.Link as={Link} to="/cart">
 				<img src={keranjang} alt="" className="thumbnail-image" />
-				{/* <!-- <span className="badge badge-pill badge-danger">1</span></a> --> */}
+				{state.carts.length ? (
+					<span className="badge badge-pill badge-danger rounded-pill position-absolute top-0 start-0">
+						{state.carts.length}
+					</span>
+				) : (
+					""
+				)}
 			</Nav.Link>
 			<NavDropdown
 				// eventKey={1}

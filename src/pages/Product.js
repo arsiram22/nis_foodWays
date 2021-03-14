@@ -1,6 +1,19 @@
-import { CardProduct } from "../compnents/Card";
+import { useContext } from "react";
+import { KeranjangContext } from "../contexts/keranjangContext";
+
+import { Card } from "../compnents/Card";
 import { products } from "../compnents/Data";
+
 function Product() {
+	const [state, dispatch] = useContext(KeranjangContext);
+
+	const addProductToCart = (data) => {
+		dispatch({
+			type: "ADD_CART",
+			payload: data,
+		});
+	};
+	// console.log("login", state);
 	return (
 		<div>
 			<div className="container pt-3">
@@ -8,12 +21,20 @@ function Product() {
 					<div className="my-2 col-12 ">
 						<h2>Menu</h2>
 					</div>
-					{products.map((data) => {
-						if (data.partnerid === 1) {
-							return <CardProduct data={data} key={data.id} />;
-						}
-					})}
+					<div className="row">
+						{products.map((product) => (
+							<div className="col-sm-3">
+								<Card
+									product={product}
+									key={product.id}
+									fromProduct={true}
+									addProductToCart={addProductToCart}
+								/>
+							</div>
+						))}
+					</div>
 				</div>
+				{/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
 			</div>
 		</div>
 	);

@@ -133,3 +133,26 @@ export const products = [
 			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx9sknrkZKnFZfjFMWTZE1cGPIMU7tJklhWA&usqp=CAU",
 	},
 ];
+
+export const users = [
+	{
+		id: 1,
+		email: "user@gmail.com",
+		name: "Aris User",
+		password: "qwerty1234",
+		type: 1,
+		phone: "0987654421",
+		img:
+			"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+	},
+	{
+		id: 1,
+		email: "partner@gmail.com",
+		name: "Aris Partner",
+		password: "qwerty1234",
+		phone: "0827654421",
+		type: 2,
+		img:
+			"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+	},
+];

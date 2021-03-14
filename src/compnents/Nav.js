@@ -15,10 +15,8 @@ const NavbarComponent = () => {
 				</Navbar.Brand>
 			</Link>
 			<Navbar.Collapse id="basic-navbar-nav" className=""></Navbar.Collapse>
-
 			<LoginRegister />
 			<User />
-
 			<Partner />
 		</Navbar>
 	);
