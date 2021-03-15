@@ -1,8 +1,17 @@
 import { useHistory } from "react-router";
+import { useContext } from "react";
+
+import { AuthContext } from "../contexts/authContext";
 
 export const CardPopular = (props) => {
 	const { name, logo, id } = props.data;
 	const history = useHistory();
+	const [state, dispatch] = useContext(AuthContext);
+	const handleOpenLogin = () => {
+		dispatch({
+			type: "MODAL_LOGIN_OPEN",
+		});
+	};
 	return (
 		<div className="col-md-3 mb-3">
 			<div

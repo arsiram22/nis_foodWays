@@ -105,74 +105,100 @@
 
 // export default Login;
 
+// import { useContext, useState } from "react";
+// import { AuthContext } from "../contexts/authContext";
+// import { UserContext } from "../contexts/userContext";
+
+// import { Button, Form, Modal } from "react-bootstrap";
+// import { Link, useHistory } from "react-router-dom";
+
+// function Login() {
+// 	const router = useHistory();
+// 	const [state, dispatch] = useContext(UserContext);
+// 	const LoginUser = () => {
+// 		dispatch({
+// 			type: "LOGIN",
+// 		});
+// 	};
+
+// 	const handleClose = () => {
+// 		dispatch({
+// 			type: "LOGOUT",
+// 		});
+// 	};
+// 	console.log(state.isLogin);
+
+// 	return (
+// 		<></>
+// 		// <Modal show={state.isLogin} onHide={handleClose} size="sm" centered>
+// 		// 	<Modal.Body>
+// 		// 		<div className="form-title mb-3">
+// 		// 			<h4 className="text-yellow">Login</h4>
+// 		// 			<h1>{state.isLogin ? "ANDA LOGIN" : "TIDAK LOGIN"}</h1>
+// 		// 		</div>
+// 		// 		<div className="d-flex flex-column">
+// 		// 			<Form>
+// 		// 				<Form.Group controlId="formBasicEmail">
+// 		// 					<Form.Control
+// 		// 						type="email"
+// 		// 						className="form-control input-bg"
+// 		// 						placeholder="Email"
+// 		// 					/>
+// 		// 				</Form.Group>
+
+// 		// 				<Form.Group controlId="formBasicPassword">
+// 		// 					<Form.Control
+// 		// 						type="password"
+// 		// 						className="form-control input-bg"
+// 		// 						placeholder="Password"
+// 		// 					/>
+// 		// 				</Form.Group>
+// 		// 				<Button
+// 		// 					variant="brown"
+// 		// 					className="btn btn-block btn-round"
+// 		// 					onClick={LoginUser}
+// 		// 				>
+// 		// 					Login
+// 		// 				</Button>
+// 		// 			</Form>
+
+// 		// 			<div className="text-center text-muted delimiter mt-2">
+// 		// 				Don't have an account ? klick
+// 		// 				<Link to="#" className="font-weight-bold text-muted">
+// 		// 					{" "}
+// 		// 					here
+// 		// 				</Link>
+// 		// 				.
+// 		// 			</div>
+// 		// 		</div>
+// 		// 	</Modal.Body>
+// 		// </Modal>
+// 	);
+// }
+// export default Login;
+
 import { useContext, useState } from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
+
 import { AuthContext } from "../contexts/authContext";
-import { UserContext } from "../contexts/userContext";
 
 import { Button, Form, Modal } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
 
-function Login() {
-	const router = useHistory();
-	const [state, dispatch] = useContext(UserContext);
-	const LoginUser = () => {
-		dispatch({
-			type: "LOGIN",
-		});
-	};
-
-	const handleClose = () => {
-		dispatch({
-			type: "LOGOUT",
-		});
-	};
-	console.log(state.isLogin);
-
+function Login(props) {
 	return (
-		<></>
-		// <Modal show={state.isLogin} onHide={handleClose} size="sm" centered>
-		// 	<Modal.Body>
-		// 		<div className="form-title mb-3">
-		// 			<h4 className="text-yellow">Login</h4>
-		// 			<h1>{state.isLogin ? "ANDA LOGIN" : "TIDAK LOGIN"}</h1>
-		// 		</div>
-		// 		<div className="d-flex flex-column">
-		// 			<Form>
-		// 				<Form.Group controlId="formBasicEmail">
-		// 					<Form.Control
-		// 						type="email"
-		// 						className="form-control input-bg"
-		// 						placeholder="Email"
-		// 					/>
-		// 				</Form.Group>
-
-		// 				<Form.Group controlId="formBasicPassword">
-		// 					<Form.Control
-		// 						type="password"
-		// 						className="form-control input-bg"
-		// 						placeholder="Password"
-		// 					/>
-		// 				</Form.Group>
-		// 				<Button
-		// 					variant="brown"
-		// 					className="btn btn-block btn-round"
-		// 					onClick={LoginUser}
-		// 				>
-		// 					Login
-		// 				</Button>
-		// 			</Form>
-
-		// 			<div className="text-center text-muted delimiter mt-2">
-		// 				Don't have an account ? klick
-		// 				<Link to="#" className="font-weight-bold text-muted">
-		// 					{" "}
-		// 					here
-		// 				</Link>
-		// 				.
-		// 			</div>
-		// 		</div>
-		// 	</Modal.Body>
-		// </Modal>
+		<Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+			<Modal.Header closeButton>
+				<Modal.Title id="contained-modal-title-vcenter">
+					Using Grid in Modal
+				</Modal.Title>
+			</Modal.Header>
+			<Modal.Body className="show-grid">
+				kljslkajsdlks sd as sds ds ds\
+			</Modal.Body>
+			<Modal.Footer>
+				<Button onClick={props.onHide}>Close</Button>
+			</Modal.Footer>
+		</Modal>
 	);
 }
 export default Login;

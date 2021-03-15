@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 
 import { KeranjangContextProvider } from "./contexts/keranjangContext";
 import { AuthContextProvaider } from "./contexts/authContext";
@@ -18,7 +18,12 @@ import Transaction from "./pages/Transaction";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+import PrivateRoute from "./compnents/PrivateRoute";
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+}
 export default function MasterRoute() {
+	let query = useQuery();
 	return (
 		<UserContextProvider>
 			<AuthContextProvaider>
@@ -28,35 +33,55 @@ export default function MasterRoute() {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/profile">
-							<Profile />
-						</Route>
-						<Route exact path="/Cart">
-							<Cart />
-						</Route>
+
+						<PrivateRoute exact path="/profile" component={Profile} />
 						{/* <Route exact path="/product">
 							<Product />
 						</Route> */}
-						<Route exact path="/product/add">
-							<AddProduct />
-						</Route>
-						<Route exact path="/profile/edit">
-							<EditProfile />
-						</Route>
-						<Route exact path="/transaction">
-							<Transaction />
-						</Route>
-						<Route exact path="/market/:id">
-							<Product />
-						</Route>
+						<PrivateRoute exact path="/Cart" component={Cart} />
+						<PrivateRoute exact path="/product/add" component={AddProduct} />
+
+						<PrivateRoute exact path="/profile/edit" component={EditProfile} />
+						<PrivateRoute exact path="/transaction" component={Transaction} />
+						<PrivateRoute exact path="/market/:id" component={Product} />
 						<Route exact path="/test">
 							<Test />
 						</Route>
 					</Switch>
 					<Register />
 					<Login />
+					<Child popUP={query.get("popup")} />
 				</KeranjangContextProvider>
 			</AuthContextProvaider>
 		</UserContextProvider>
+	);
+}
+
+function Child({ popUP }) {
+	const [show, setShow] = useState(true);
+	// const handleClose = () => setShow(false);
+	console.log("sow", show);
+	const close = () => {
+		setShow(false);
+	};
+	useEffect(() => {
+		console.log("useEffect componentDidMount");
+		if (popUP) {
+			setShow(true);
+			// console.log("popup");
+		}
+	}, [show]); //fetching data dari API
+
+	// return <div>{popUP ? <Login show={show} onHide={close} /> : <h1></h1>}</div>;
+	return (
+		<>
+			{popUP === "login" && (
+				<>
+					<Login show={show} onHide={close} />
+
+					{show === false ? <Redirect to="/" /> : <></>}
+				</>
+			)}
+		</>
 	);
 }

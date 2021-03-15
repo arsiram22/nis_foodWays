@@ -1,7 +1,7 @@
 import { Navbar, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import { LoginRegister, User, Partner } from "./Menu";
+import Menu from "./Menu";
 
 import logo from "../compnents/img/logo.svg";
 
@@ -15,9 +15,7 @@ const NavbarComponent = () => {
 				</Navbar.Brand>
 			</Link>
 			<Navbar.Collapse id="basic-navbar-nav" className=""></Navbar.Collapse>
-			<LoginRegister />
-			<User />
-			<Partner />
+			<Menu />
 		</Navbar>
 	);
 };

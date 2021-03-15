@@ -11,11 +11,10 @@ import product from "./img/product.svg";
 import logout from "./img/logout.svg";
 
 const Menu = () => {
-	return (
-		<>
-			<LoginRegister />
-		</>
-	);
+	const [state, dispatch] = useContext(AuthContext);
+	// console.log("menu-header", state);
+
+	return <>{!state.user.type ? <LoginRegister /> : <User />}</>;
 };
 
 export default Menu;
@@ -51,27 +50,25 @@ export const LoginRegister = () => {
 };
 
 export const User = () => {
-	const [state, dispatch] = useContext(KeranjangContext);
+	const [state, dispatch] = useContext(AuthContext);
 
+	const logoutUser = () => {
+		// console.log("lll", state);
+		dispatch({
+			type: "LOGOUT",
+		});
+	};
 	return (
 		<>
-			<Nav.Link as={Link} to="/cart">
-				<img src={keranjang} alt="" className="thumbnail-image" />
-				{state.carts.length ? (
-					<span className="badge badge-pill badge-danger rounded-pill position-absolute top-0 start-0">
-						{state.carts.length}
-					</span>
-				) : (
-					""
-				)}
-			</Nav.Link>
+			{state.user.type === 1 ? <Cart /> : ""}
+
 			<NavDropdown
 				// eventKey={1}
 				title={
 					<div className="pull-left">
 						<img
 							className="thumbnail-image rounded-circle"
-							src="https://ui-avatars.com/api/?name=aa"
+							src={state.user.img}
 							alt="user pic"
 							width="40"
 							height="40"
@@ -85,9 +82,16 @@ export const User = () => {
 				<Link to="/profile" className="dropdown-item">
 					<img src={user} alt="" className="dropdown-logo " /> Profile
 				</Link>
+				{state.user.type === 2 ? (
+					<Link to="/product/add" className="dropdown-item">
+						<img src={product} alt="" className="dropdown-logo " /> Add product
+					</Link>
+				) : (
+					""
+				)}
 
 				<NavDropdown.Divider />
-				<Link to="/logout" className="dropdown-item">
+				<Link to="/#" onClick={logoutUser} className="dropdown-item">
 					<img src={logout} alt="" className="dropdown-logo " /> logout
 				</Link>
 			</NavDropdown>
@@ -95,35 +99,20 @@ export const User = () => {
 	);
 };
 
-export const Partner = () => {
+export const Cart = () => {
+	const [state, dispatch] = useContext(KeranjangContext);
 	return (
-		<NavDropdown
-			// eventKey={1}
-			title={
-				<div className="pull-left">
-					<img
-						className="thumbnail-image rounded-circle"
-						src="https://ui-avatars.com/api/?name=aa"
-						alt="user pic"
-						width="40"
-						height="40"
-					/>
-				</div>
-			}
-			id="basic-nav-dropdown"
-			alignRight
-			// className="dropdown-menu-right menu"
-		>
-			<Link to="/profile" className="dropdown-item">
-				<img src={user} alt="" className="dropdown-logo " /> Profile Partner
-			</Link>
-			<Link to="/product/add" className="dropdown-item">
-				<img src={product} alt="" className="dropdown-logo " /> Add product
-			</Link>
-			<NavDropdown.Divider />
-			<Link to="/logout" className="dropdown-item">
-				<img src={logout} alt="" className="dropdown-logo " /> logout
-			</Link>
-		</NavDropdown>
+		<>
+			<Nav.Link as={Link} to="/cart">
+				<img src={keranjang} alt="" className="thumbnail-image" />
+				{state.carts.length ? (
+					<span className="badge badge-pill badge-danger rounded-pill position-absolute top-0 start-0">
+						{state.carts.length}
+					</span>
+				) : (
+					""
+				)}
+			</Nav.Link>
+		</>
 	);
 };

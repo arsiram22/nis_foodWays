@@ -13,6 +13,7 @@ function Home() {
 					<div className="my-2 col-12">
 						<h2>Popular Restaurant</h2>
 					</div>
+
 					{restaurants.map((data) => {
 						if (data.popular === true) {
 							return <CardPopular data={data} key={data.id} />;
@@ -25,7 +26,7 @@ function Home() {
 					</div>
 					{restaurants.map((data) => {
 						if (data.popular === false) {
-							return <CardNearyou data={data} key={data.id} />;
+							<CardNearyou data={data} key={data.id} />;
 						}
 					})}
 				</div>
