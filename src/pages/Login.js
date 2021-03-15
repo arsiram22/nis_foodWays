@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from "../contexts/authContext";
 

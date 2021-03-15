@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { AuthContext } from "../contexts/authContext";
 
 const Profile = () => {
+	const [state, dispatch] = useContext(AuthContext);
 	return (
 		<>
 			<div className="container pt-3">
@@ -11,7 +15,7 @@ const Profile = () => {
 							<div className="col-5">
 								<img
 									className="img-fluid"
-									src="profile.jpg"
+									src={state.user.img}
 									alt="profile"
 									style={{
 										objectFit: "cover",
@@ -27,13 +31,13 @@ const Profile = () => {
 							</div>
 							<div className="col-7 profile-text">
 								<h5>Full Name</h5>
-								<p>Andi</p>
+								<p>{state.user.name}</p>
 								<br />
 								<h5>Email</h5>
-								<p>andigans@gmail.com</p>
+								<p>{state.user.email}</p>
 								<br />
 								<h5>Phone</h5>
-								<p>087646546546</p>
+								<p>{state.user.phone}</p>
 								<br />
 							</div>
 						</div>

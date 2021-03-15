@@ -2,6 +2,7 @@ import { useHistory } from "react-router";
 import { useContext } from "react";
 
 import { AuthContext } from "../contexts/authContext";
+import convertToRupiah from "../compnents/ToRupiah";
 
 export const CardPopular = (props) => {
 	const { name, logo, id } = props.data;
@@ -111,7 +112,7 @@ export const Card = ({ product, fromProduct, addProductToCart }) => {
 						{name}
 					</h5>
 				</div>
-				<small className="text-danger">{price}</small>
+				<small className="text-danger">{convertToRupiah(price)}</small>
 				<div className=" d-flex justify-content-center align-items-center flex-column">
 					{fromProduct && (
 						<button

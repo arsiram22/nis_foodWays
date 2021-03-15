@@ -3,6 +3,7 @@ import map from "../compnents/img/map.svg";
 import { useContext } from "react";
 import { KeranjangContext } from "../contexts/keranjangContext";
 import { Link } from "react-router-dom";
+import convertToRupiah from "../compnents/ToRupiah";
 
 const Cart = () => {
 	const [state, dispatch] = useContext(KeranjangContext);
@@ -173,7 +174,7 @@ const Cart = () => {
 											>
 												<td>Subtotal</td>
 												<td className="text-danger text-right">
-													{getSubTotal(state.carts)}
+													{convertToRupiah(getSubTotal(state.carts))}
 												</td>
 											</tr>
 											<tr>
@@ -192,7 +193,7 @@ const Cart = () => {
 											>
 												<td>Total</td>
 												<td className="text-right">
-													{getTotal(state.carts, 10000)}
+													{convertToRupiah(getTotal(state.carts, 10000))}
 												</td>
 											</tr>
 										</table>
@@ -221,23 +222,6 @@ const Cart = () => {
 
 export default Cart;
 
-function convertToRupiah(number) {
-	if (number) {
-		var rupiah = "";
-		var numberrev = number.toString().split("").reverse().join("");
-		for (var i = 0; i < numberrev.length; i++)
-			if (i % 3 === 0) rupiah += numberrev.substr(i, 3) + ".";
-		return (
-			"Rp. " +
-			rupiah
-				.split("", rupiah.length - 1)
-				.reverse()
-				.join("")
-		);
-	} else {
-		return number;
-	}
-}
 const sum = (data) => {
 	var sum = 0;
 	data.forEach(function (obj) {

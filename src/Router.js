@@ -3,7 +3,6 @@ import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 
 import { KeranjangContextProvider } from "./contexts/keranjangContext";
 import { AuthContextProvaider } from "./contexts/authContext";
-import { UserContextProvider } from "./contexts/userContext";
 
 import Navigation from "./compnents/Nav";
 
@@ -25,35 +24,33 @@ function useQuery() {
 export default function MasterRoute() {
 	let query = useQuery();
 	return (
-		<UserContextProvider>
-			<AuthContextProvaider>
-				<KeranjangContextProvider>
-					<Navigation />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
+		<AuthContextProvaider>
+			<KeranjangContextProvider>
+				<Navigation />
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
 
-						<PrivateRoute exact path="/profile" component={Profile} />
-						{/* <Route exact path="/product">
+					<PrivateRoute exact path="/profile" component={Profile} />
+					{/* <Route exact path="/product">
 							<Product />
 						</Route> */}
-						<PrivateRoute exact path="/Cart" component={Cart} />
-						<PrivateRoute exact path="/product/add" component={AddProduct} />
+					<PrivateRoute exact path="/Cart" component={Cart} />
+					<PrivateRoute exact path="/product/add" component={AddProduct} />
 
-						<PrivateRoute exact path="/profile/edit" component={EditProfile} />
-						<PrivateRoute exact path="/transaction" component={Transaction} />
-						<PrivateRoute exact path="/market/:id" component={Product} />
-						<Route exact path="/test">
-							<Test />
-						</Route>
-					</Switch>
-					<Register />
-					<Login />
-					<Child popUP={query.get("popup")} />
-				</KeranjangContextProvider>
-			</AuthContextProvaider>
-		</UserContextProvider>
+					<PrivateRoute exact path="/profile/edit" component={EditProfile} />
+					<PrivateRoute exact path="/transaction" component={Transaction} />
+					<PrivateRoute exact path="/market/:id" component={Product} />
+					<Route exact path="/test">
+						<Test />
+					</Route>
+				</Switch>
+				<Register />
+				<Login />
+				<Child popUP={query.get("popup")} />
+			</KeranjangContextProvider>
+		</AuthContextProvaider>
 	);
 }
 
