@@ -107,7 +107,8 @@ export const Cart = () => {
 				<img src={keranjang} alt="" className="thumbnail-image" />
 				{state.carts.length ? (
 					<span className="badge badge-pill badge-danger rounded-pill position-absolute top-0 start-0">
-						{state.carts.length}
+						{/* {state.carts.length} */}
+						{sum(state.carts)}
 					</span>
 				) : (
 					""
@@ -115,4 +116,12 @@ export const Cart = () => {
 			</Nav.Link>
 		</>
 	);
+};
+
+const sum = (data) => {
+	var sum = 0;
+	data.forEach(function (obj) {
+		sum += obj.qty;
+	});
+	return sum;
 };

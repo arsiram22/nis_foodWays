@@ -1,4 +1,9 @@
+import { AuthContext } from "../contexts/authContext";
+import { transaction, order, restaurants } from "../API/Data";
+import { useContext } from "react";
+import { Button } from "react-bootstrap";
 const Transaction = () => {
+	const [state, dispatch] = useContext(AuthContext);
 	return (
 		<>
 			<div className="container pt-3">
@@ -20,13 +25,54 @@ const Transaction = () => {
 									</tr>
 								</thead>
 								<tbody style={{ background: "#fff" }}>
+									{transaction.map((trans) => (
+										<tr>
+											<td>{trans.id}</td>
+											<td>Aris User</td>
+											<td>bekasi</td>
+											<td>Burger </td>
+											<td
+												style={{
+													color: "green",
+												}}
+											>
+												succes
+											</td>
+											<td>
+												<img src="ok.svg" title="ok" />
+											</td>
+										</tr>
+									))}
 									<tr>
-										<td>ha</td>
-										<td>ha</td>
-										<td>ha</td>
-										<td>ha</td>
-										<td>ha</td>
-										<td>ha</td>
+										<td>4</td>
+										<td>Aris User</td>
+										<td>bekasi</td>
+										<td>Burger </td>
+										<td>
+											<p className="text-info">On The Way</p>
+										</td>
+										<td>
+											<img src="" alt wait />
+										</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>Aris User</td>
+										<td>bekasi</td>
+										<td>Burger </td>
+										<td>
+											<p className="text-warning">Waiting Approve</p>
+										</td>
+										<td>
+											<div className="row col-">
+												<Button size="sm" variant="danger" className="">
+													Cancel
+												</Button>
+												<Button size="sm" variant="success">
+													Approve
+												</Button>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>

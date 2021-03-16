@@ -1,6 +1,6 @@
 import Header from "../compnents/Header";
 import { CardNearyou, CardPopular } from "../compnents/Card";
-import { restaurants } from "../compnents/Data";
+import { restaurants } from "../API/Data";
 import { Dropdown } from "react-bootstrap";
 // import Dropdowns from "../compnents/Dropdowns";
 function Home() {

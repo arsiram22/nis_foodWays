@@ -31,14 +31,10 @@ export default function MasterRoute() {
 					<Route exact path="/">
 						<Home />
 					</Route>
-
 					<PrivateRoute exact path="/profile" component={Profile} />
-					{/* <Route exact path="/product">
-							<Product />
-						</Route> */}
+					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute exact path="/Cart" component={Cart} />
 					<PrivateRoute exact path="/product/add" component={AddProduct} />
-
 					<PrivateRoute exact path="/profile/edit" component={EditProfile} />
 					<PrivateRoute exact path="/transaction" component={Transaction} />
 					<PrivateRoute exact path="/market/:id" component={Product} />
@@ -69,7 +65,6 @@ function Child({ popUP }) {
 		}
 	}, [show]); //fetching data dari API
 
-	// return <div>{popUP ? <Login show={show} onHide={close} /> : <h1></h1>}</div>;
 	return (
 		<>
 			{popUP === "login" && (

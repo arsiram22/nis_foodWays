@@ -1,12 +1,14 @@
 import map from "../compnents/img/map.svg";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { KeranjangContext } from "../contexts/keranjangContext";
 import { Link } from "react-router-dom";
 import convertToRupiah from "../compnents/ToRupiah";
+import Maps from "../compnents/Maps";
 
 const Cart = () => {
 	const [state, dispatch] = useContext(KeranjangContext);
+	const [modalShow, setModalShow] = useState(false);
 
 	const deleteProductFromCart = (id) => {
 		dispatch({
@@ -55,7 +57,10 @@ const Cart = () => {
 										/>
 									</div>
 									<div className="col-3 pr-0">
-										<button class="btn btn-brown btn-block" type="submit">
+										<button
+											class="btn btn-brown btn-block"
+											onClick={() => setModalShow(true)}
+										>
 											Select On Map
 											<img src={map} alt="map" className="ml-2" />
 										</button>
@@ -92,7 +97,10 @@ const Cart = () => {
 															/>{" "}
 														</th>
 														<td>{cart.name}</td>
-														<td className="text-danger">
+														<td
+															className="text-danger	text-right"
+															style={{ width: "35%" }}
+														>
 															{convertToRupiah(cart.price * cart.qty)}
 														</td>
 													</tr>
@@ -106,38 +114,60 @@ const Cart = () => {
 																class="input-group mb-3"
 																style={{ width: "50%" }}
 															>
-																<div class="input-group-prepend">
+																<div class="">
 																	{cart.qty === 1 ? (
 																		<button
-																			class="btn btn-outline-secondary"
+																			class=""
 																			type="button"
 																			onClick={() =>
 																				deleteProductFromCart(cart.id)
 																			}
+																			style={{
+																				border: "0",
+																				background: "transparent",
+																				fontSize: "20px",
+																				fontWeight: "bolder",
+																			}}
 																		>
 																			-
 																		</button>
 																	) : (
 																		<button
-																			class="btn btn-outline-secondary"
-																			type="button"
 																			onClick={() =>
 																				minusProductFromCart(cart.id)
 																			}
+																			class=""
+																			type="button"
+																			style={{
+																				border: "0",
+																				background: "transparent",
+																				fontSize: "20px",
+																				fontWeight: "bolder",
+																			}}
 																		>
 																			-
 																		</button>
 																	)}
 																</div>
 																<input
-																	type="text"
-																	class="form-control"
 																	value={cart.qty}
+																	type="text"
+																	style={{
+																		width: "34px",
+																		background: "#F6E6DA",
+																		borderRadius: "5px",
+																		textAlign: "center",
+																		border: "0",
+																	}}
 																/>
 																<div class="input-group-append">
 																	<button
-																		class="btn btn-outline-secondary"
-																		type="button"
+																		style={{
+																			border: "0",
+																			background: "transparent",
+																			fontSize: "20px",
+																			fontWeight: "bolder",
+																		}}
 																		onClick={() => addProductToCart(cart)}
 																	>
 																		+
@@ -145,7 +175,7 @@ const Cart = () => {
 																</div>
 															</div>
 														</td>
-														<td>
+														<td className="text-right">
 															<Link
 																href="/#"
 																onClick={() => deleteProductFromCart(cart.id)}
@@ -210,12 +240,41 @@ const Cart = () => {
 							</div>
 						</>
 					) : (
-						<div className="col col-10">
-							<h1>empty</h1>
+						<div className="col">
+							<div className="container-fluid mt-100">
+								<div className="row">
+									<div className="col-md-12">
+										<div className="card">
+											<div className="card-body cart">
+												<div
+													className="col-sm-12 empty-cart-cls text-center"
+													style={{ background: "whitesmoke" }}
+												>
+													{" "}
+													<img
+														src="https://www.pngitem.com/pimgs/m/174-1749315_shopping-cart-buy-online-icon-png-transparent-png.png"
+														width="130"
+														height="130"
+														class="img-fluid mb-4 mr-3"
+													/>
+													<h3>
+														<strong>Your Cart is Empty</strong>
+													</h3>
+													<h4>Add something to make me happy :)</h4>{" "}
+													<Link to="/" className="btn btn-yellow mb-4">
+														continue shopping
+													</Link>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					)}
 				</div>
 			</div>
+			<Maps show={modalShow} onHide={() => setModalShow(false)} />
 		</>
 	);
 };

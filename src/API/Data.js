@@ -156,3 +156,64 @@ export const users = [
 			"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 	},
 ];
+
+export const transaction = [
+	{
+		id: 1,
+		partnerid: 1,
+		userid: 1,
+		location: "alamat",
+		order: 1,
+		approve: 1,
+		date: "Selasa, 16 Maret 2021",
+	},
+	{
+		id: 2,
+		partnerid: 1,
+		userid: 1,
+		location: "alamat",
+		order: 1,
+		approve: 1,
+		date: "minggu, 14 Maret 2021",
+	},
+	{
+		id: 3,
+		partnerid: 1,
+		userid: 1,
+		location: "alamat",
+		order: 1,
+		approve: 1,
+		date: "minggu, 14 Maret 2021",
+	},
+];
+
+export const order = [
+	{
+		id: 1,
+		tranid: 1,
+		productid: 1,
+		qty: 3,
+		price: 24000,
+	},
+	{
+		id: 2,
+		tranid: 1,
+		productid: 1,
+		qty: 3,
+		price: 24000,
+	},
+	{
+		id: 4,
+		tranid1: 1,
+		productid: 1,
+		qty: 3,
+		price: 24000,
+	},
+	{
+		id: 5,
+		tranid: 2,
+		productid: 1,
+		qty: 3,
+		price: 24000,
+	},
+];

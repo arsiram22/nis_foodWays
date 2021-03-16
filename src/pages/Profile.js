@@ -2,9 +2,26 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 import { AuthContext } from "../contexts/authContext";
+import { transaction, order, restaurants } from "../API/Data";
 
 const Profile = () => {
 	const [state, dispatch] = useContext(AuthContext);
+
+	// const filtered = products.filter((post) => {
+	// 	if (post.partnerid == id) {
+	// 		return post;
+	// 	}
+	// });
+
+	const data = transaction.map((trans) => {
+		restaurants.filter((res) => {
+			if (res.id === trans.partnerid) {
+			}
+		});
+	});
+
+	console.log(data);
+
 	return (
 		<>
 			<div className="container pt-3">
@@ -43,43 +60,55 @@ const Profile = () => {
 						</div>
 					</div>
 					<div className="my-2 col-5 ">
-						<h2>History Transaction</h2>
-						<div className="card text-left">
-							<div className="card-body row mx-0">
-								<div className="col px-1">
-									<h5>Title</h5>
-									<p>
-										Saturday,<small>12 march 2021</small>
-									</p>
-									<p className="mb-0 mt-3" style={{ color: "#974A4A" }}>
-										Total : RP 45.000
-									</p>
-								</div>
-								<div className="col-5 px-1">
-									<div className="col-12 row px-0">
-										<h5>WaysFood</h5>
-										<img
-											src="logo512.png"
-											alt="WF"
-											className="ml-2"
-											style={{
-												objectFit: "cover",
-												width: "25px",
-												height: "25px",
-											}}
-										/>
+						<h2>
+							{state.user.type == 1 ? "History Transaction" : "History Order"}
+						</h2>
+						{transaction.map((trans) => (
+							<div className="card text-left">
+								<div className="card-body row mx-0">
+									<div className="col px-1">
+										<h5>Burger King</h5>
+										{restaurants.filter((res) => {
+											if (res.id === trans.partnerid) {
+												{
+													<h5>{res.name}</h5>;
+												}
+											}
+										})}
+
+										<p>
+											<small>{trans.date}</small>
+										</p>
+										<p className="mb-0 mt-3" style={{ color: "#974A4A" }}>
+											Total : RP 45.000
+										</p>
 									</div>
-									<div className="col-12 row px-0">
-										<Link
-											to=""
-											className="btn btn-block btn-outline-success btn-sm mt-4"
-										>
-											Succes
-										</Link>
+									<div className="col-5 px-1">
+										<div className="col-12 row px-0">
+											<h5>WaysFood</h5>
+											<img
+												src="logo512.png"
+												alt="WF"
+												className="ml-2"
+												style={{
+													objectFit: "cover",
+													width: "25px",
+													height: "25px",
+												}}
+											/>
+										</div>
+										<div className="col-12 row px-0">
+											<Link
+												to=""
+												className="btn btn-block btn-outline-success btn-sm mt-4"
+											>
+												Succes
+											</Link>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</div>

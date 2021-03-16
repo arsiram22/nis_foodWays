@@ -237,3 +237,15 @@ input {
 		transform: translate3d(4px, 0, 0);
 	}
 }
+
+.map-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%; */
+}
