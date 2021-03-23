@@ -1,9 +1,37 @@
 import { AuthContext } from "../contexts/authContext";
 import { transaction, order, restaurants } from "../API/Data";
 import { useContext } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
+
+// IMG
+import cancel from "../compnents/img/cancel.svg";
+import succes from "../compnents/img/success.svg";
+import otw from "../compnents/img/on-time.svg";
+
 const Transaction = () => {
 	const [state, dispatch] = useContext(AuthContext);
+
+	const handleStatus = (status) => {
+		switch (status) {
+			case 0:
+				return <p className="text-danger">Cancel</p>;
+
+			case 1:
+				return <p className="text-warning">Waiting Approve</p>;
+
+			case 2:
+				return <p className="text-info">On The Way</p>;
+
+			case 3:
+				return <p className="text-success">Success</p>;
+
+			default:
+				return;
+				// <td></td><td></td>
+				break;
+		}
+	};
+
 	return (
 		<>
 			<div className="container pt-3">
@@ -13,69 +41,131 @@ const Transaction = () => {
 							<h2>Income Transaction</h2>
 						</div>
 						<div className="table-responsive">
-							<table className="table table-hover table-bordered table-bordered-black">
-								<thead>
-									<tr className="table-active">
+							<Table
+								style={{ backgroundColor: "white", borderColor: "#828282" }}
+								className="overflow-auto  table-hover table-bordered table-bordered-black"
+							>
+								<thead style={{ backgroundColor: "#E5E5E5" }}>
+									<tr>
 										<th style={{ width: "" }}>No</th>
 										<th style={{ width: "15%" }}>Name</th>
 										<th style={{ width: "30%" }}>Address</th>
-										<th style={{ width: "20%" }}>Product Order</th>
+										<th>Product Order</th>
 										<th style={{ width: "15%" }}>Status</th>
 										<th style={{ width: "15%" }}>Action</th>
 									</tr>
 								</thead>
-								<tbody style={{ background: "#fff" }}>
-									{transaction.map((trans) => (
-										<tr>
-											<td>{trans.id}</td>
-											<td>Aris User</td>
-											<td>bekasi</td>
-											<td>Burger </td>
-											<td
-												style={{
-													color: "green",
-												}}
-											>
-												succes
-											</td>
-											<td>
-												<img src="ok.svg" title="ok" />
-											</td>
-										</tr>
-									))}
+								<tbody>
+									{/* {incomeList.map((income, index) => ( */}
 									<tr>
-										<td>4</td>
-										<td>Aris User</td>
-										<td>bekasi</td>
-										<td>Burger </td>
+										<td>sd</td>
+										<td>sd</td>
+										<td>ds</td>
 										<td>
-											<p className="text-info">On The Way</p>
+											<div
+												style={{
+													width: "200px",
+													overflow: "hidden",
+													whiteSpace: "nowrap",
+													textOverflow: "ellipsis",
+												}}
+											></div>
 										</td>
-										<td>
-											<img src="" alt wait />
+										<td className="text-center text-success">succes</td>
+										<td className="text-center">
+											<img src={succes} alt="success action" />
 										</td>
 									</tr>
 									<tr>
-										<td>5</td>
-										<td>Aris User</td>
-										<td>bekasi</td>
-										<td>Burger </td>
+										<td>sd</td>
+										<td>sd</td>
+										<td>ds</td>
 										<td>
-											<p className="text-warning">Waiting Approve</p>
+											<div
+												style={{
+													width: "200px",
+													overflow: "hidden",
+													whiteSpace: "nowrap",
+													textOverflow: "ellipsis",
+												}}
+											></div>
 										</td>
+										<td className="text-center text-info">On The Way</td>
+										<td className="text-center">
+											<img src={otw} alt="on the way" />
+										</td>
+									</tr>
+									<tr>
+										<td>sd</td>
+										<td>sd</td>
+										<td>ds</td>
 										<td>
-											<div className="row col-">
-												<Button size="sm" variant="danger" className="">
+											<div
+												style={{
+													width: "200px",
+													overflow: "hidden",
+													whiteSpace: "nowrap",
+													textOverflow: "ellipsis",
+												}}
+											></div>
+										</td>
+										<td className="text-center text-warning">Waiting Approp</td>
+										<td className="text-center">
+											<div style={{ display: "flex" }}>
+												<Button
+													size="sm2"
+													variant="danger"
+													className="mr-0 mr-lg-2"
+												>
 													Cancel
 												</Button>
-												<Button size="sm" variant="success">
+												<Button size="sm2" variant="success">
 													Approve
 												</Button>
 											</div>
 										</td>
 									</tr>
+									<tr>
+										<td>sd</td>
+										<td>sd</td>
+										<td>ds</td>
+										<td>
+											<div
+												style={{
+													width: "200px",
+													overflow: "hidden",
+													whiteSpace: "nowrap",
+													textOverflow: "ellipsis",
+												}}
+											></div>
+										</td>
+										<td className="text-center text-danger">Cancel</td>
+										<td className="text-center">
+											<img src={cancel} alt="success action" />
+										</td>
+									</tr>
+									<tr>
+										<td>sd</td>
+										<td>sd</td>
+										<td>ds</td>
+										<td>
+											<div
+												style={{
+													width: "200px",
+													overflow: "hidden",
+													whiteSpace: "nowrap",
+													textOverflow: "ellipsis",
+												}}
+											></div>
+										</td>
+										<td className="text-center text-info">On The Way</td>
+										<td className="text-center">
+											<img src={otw} alt="on the way" />
+										</td>
+									</tr>
+									{/* ))} */}
 								</tbody>
-							</table>
+							</Table>
 						</div>
 					</div>
 				</div>

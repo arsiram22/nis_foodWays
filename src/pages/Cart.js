@@ -34,7 +34,31 @@ const Cart = () => {
 			payload: data,
 		});
 	};
-	console.log(state.carts);
+	const sum = (data) => {
+		var sum = 0;
+		data.forEach(function (obj) {
+			sum += obj.qty;
+		});
+		return sum;
+	};
+
+	function getSubTotal(data) {
+		var subtotal = 0;
+		data.forEach(function (obj) {
+			subtotal += obj.qty * obj.price;
+		});
+		return subtotal;
+	}
+	function getTotal(data, ongkir) {
+		var subtotal = 0;
+		data.forEach(function (obj) {
+			subtotal += obj.qty * obj.price;
+		});
+		return subtotal + ongkir;
+	}
+
+	// console.log(state.carts);
+
 	return (
 		<>
 			<div className="container pt-3">
@@ -280,26 +304,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-const sum = (data) => {
-	var sum = 0;
-	data.forEach(function (obj) {
-		sum += obj.qty;
-	});
-	return sum;
-};
-
-function getSubTotal(data) {
-	var subtotal = 0;
-	data.forEach(function (obj) {
-		subtotal += obj.qty * obj.price;
-	});
-	return subtotal;
-}
-function getTotal(data, ongkir) {
-	var subtotal = 0;
-	data.forEach(function (obj) {
-		subtotal += obj.qty * obj.price;
-	});
-	return subtotal + ongkir;
-}

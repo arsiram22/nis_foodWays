@@ -268,65 +268,165 @@
 
 // export default App;
 
-import React, { useRef, useEffect, useState } from "react";
+// import React, { useRef, useEffect, useState } from "react";
 
-// images
-// import Location from "../../assets/icon/location.svg";
+// // images
+// // import Location from "../../assets/icon/location.svg";
 
-import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
-// eslint-disable-next-line import/no-webpack-loader-syntax
-// import Worker from "worker-loader!./Worker.js";
-// import MapboxWorker from "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
+// import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
+// // eslint-disable-next-line import/no-webpack-loader-syntax
+// // import Worker from "worker-loader!./Worker.js";
+// // import MapboxWorker from "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
 
-mapboxgl.workerClass = MapboxWorker;
-mapboxgl.accessToken = process.env.REACT_APP_API_KEY;
+// mapboxgl.workerClass = MapboxWorker;
+// mapboxgl.accessToken = process.env.REACT_APP_API_KEY;
 
-export default function MapPartner() {
-	const mapContainer = useRef();
-	const [lng, setLng] = useState(106.8567);
-	const [lat, setLat] = useState(-6.1775);
-	const [zoom, setZoom] = useState(9);
+// export default function MapPartner() {
+// 	const mapContainer = useRef();
+// 	const [lng, setLng] = useState(106.8567);
+// 	const [lat, setLat] = useState(-6.1775);
+// 	const [zoom, setZoom] = useState(9);
 
-	useEffect(() => {
-		const map = new mapboxgl.Map({
-			container: mapContainer.current,
-			style: "mapbox://styles/mapbox/streets-v11",
-			center: [lng, lat],
-			zoom: zoom,
-		});
+// 	useEffect(() => {
+// 		const map = new mapboxgl.Map({
+// 			container: mapContainer.current,
+// 			style: "mapbox://styles/mapbox/streets-v11",
+// 			center: [lng, lat],
+// 			zoom: zoom,
+// 		});
 
-		map.on("move", () => {
-			setLng(map.getCenter().lng.toFixed(4));
-			setLat(map.getCenter().lat.toFixed(4));
-			setZoom(map.getZoom().toFixed(2));
-		});
+// 		map.on("move", () => {
+// 			setLng(map.getCenter().lng.toFixed(4));
+// 			setLat(map.getCenter().lat.toFixed(4));
+// 			setZoom(map.getZoom().toFixed(2));
+// 		});
 
-		console.log("data map", map.getCenter());
-		return () => map.remove();
-	}, []);
+// 		console.log("data map", map.getCenter());
+// 		return () => map.remove();
+// 	}, []);
+
+// 	return (
+// 		<div>
+// 			<div className="sidebar shadow p-3">
+// 				<h6 className="avenir-font mb-4 font-weight-bold">
+// 					Select Delivery Location
+// 				</h6>
+// 				<div className="d-flex">
+// 					<div>
+// 						<img src={Location} alt="location" className="mr-4" />
+// 					</div>
+// 					<div>
+// 						<p className="address-title">Harbour Building</p>
+// 						<p className="address-user">
+// 							Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
+// 							Selatan, Banten 15413, Indonesia
+// 						</p>
+// 					</div>
+// 				</div>
+// 				<p className="avenir-font font-weight-bold">Delivery Time</p>
+// 				<p>10 - 15 Minutes</p>
+// 			</div>
+// 			<div className="map-container" ref={mapContainer} />
+// 		</div>
+// 	);
+// }
+
+import * as React from "react";
+import { useState } from "react";
+import { Button, Col, Row } from "react-bootstrap";
+import ReactMapGL from "react-map-gl";
+import { DialogBottom, DialogRight } from "../compnents/maps/Dialog";
+
+const Token =
+	"pk.eyJ1Ijoiam9keXNlcHRpYXdhbiIsImEiOiJja204bHN3dGQxOTI0MnZydHR2Z2pmZWRuIn0.-BxbTvANWOYx-7gmCMDtHw";
+
+function Map() {
+	const [viewport, setViewport] = useState({
+		width: 400,
+		height: 400,
+		latitude: 37.7577,
+		longitude: -122.4376,
+		zoom: 8,
+	});
 
 	return (
-		<div>
-			<div className="sidebar shadow p-3">
-				<h6 className="avenir-font mb-4 font-weight-bold">
-					Select Delivery Location
-				</h6>
-				<div className="d-flex">
-					<div>
-						<img src={Location} alt="location" className="mr-4" />
-					</div>
-					<div>
-						<p className="address-title">Harbour Building</p>
-						<p className="address-user">
-							Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
-							Selatan, Banten 15413, Indonesia
-						</p>
-					</div>
-				</div>
-				<p className="avenir-font font-weight-bold">Delivery Time</p>
-				<p>10 - 15 Minutes</p>
-			</div>
-			<div className="map-container" ref={mapContainer} />
+		// <ReactMapGL
+		// 	{...viewport}
+		// 	onViewportChange={(nextViewport) => setViewport(nextViewport)}
+		// 	mapboxApiAccessToken={Token}
+		// />
+		<div className="py-5 my5 ">
+			{/* <ReactMapGL
+				className="img-fluid"
+				{...viewport}
+				onViewportChange={(viewmport) => {
+					setViewport(viewmport);
+				}}
+				mapStyle="mapbox://styles/jodyseptiawan/ckm8u2216elzw17rziiaoor6g"
+				mapboxApiAccessToken={Token}
+			>
+				<span className="box-map card-maps mb-auto mx-auto card bg-light py-2 px-3 rounded m-2 border border-success">
+					<small className="mb-2">
+						<b>Select Delivery Location</b>
+					</small>
+					<span className="text-danger d-inline">Yogyakarta</span>
+					<button className="btn btn-sm btn-dark px-5 btn-order-cart btn-block py-1 mt-3">
+						Confirm Location{" "}
+					</button>
+				</span>
+			</ReactMapGL> */}
+
+			<DialogRight>
+				<Row className="mb-4">
+					<Col>
+						<h5 className="font-weight-bold mb-0">
+							Waiting for the transaction to be approved
+						</h5>
+					</Col>
+				</Row>
+				<Row className="mb-5">
+					<Col lg={2}>
+						MAP{/* <img src={iconMapPointer} alt="map pointer" width="55" /> */}
+					</Col>
+					<Col lg={10}>
+						<Row>
+							<Col lg={12}>
+								<small className="font-weight-bold">Harbour Building</small>
+							</Col>
+
+							<Col lg={12} style={{ lineHeight: "1" }}>
+								<small className="text-sm">
+									Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
+									Selatan, Banten 15413, Indonesia
+								</small>
+							</Col>
+						</Row>
+					</Col>
+				</Row>
+				<Row>
+					<Col lg={12} className="mb-4">
+						<h5 className="font-weight-bold mb-0">Delivery Time</h5>
+					</Col>
+					<Col>
+						<p>10 - 15 minutes</p>
+					</Col>
+				</Row>
+
+				<Row className="mt-4">
+					<Col lg={12}>
+						<Button
+							variant="brown"
+							className="w-100"
+							// onClick={handleFinished}
+						>
+							Finished Order
+						</Button>
+					</Col>
+				</Row>
+			</DialogRight>
+
+			{/* ujung */}
 		</div>
 	);
 }
+export default Map;

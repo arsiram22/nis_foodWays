@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { API, setAuthToken } from "../config/api";
 
 import { AuthContext } from "../contexts/authContext";
 
@@ -11,35 +12,34 @@ function Login(props) {
 	const router = useHistory();
 	const [form, setForm] = useState({
 		email: "",
+		password: "",
 	});
 
-	const LoginUser = () => {
-		dispatch({
-			type: "LOGIN",
-			payload: { email: form.email },
-		});
-		// console.log("atas", state.user);
+	// const LoginUser = () => {
+	// 	dispatch({
+	// 		type: "LOGIN",
+	// 		payload: { email: form.email },
+	// 	});
 
-		if (state.user.type) {
-			// console.log("masuk", state);
-			if (state.user.type === 1) {
-				router.push("/");
-				handleClose();
-				setForm({
-					email: "",
-				});
-			} else {
-				handleClose();
-				router.push("/transaction");
-				setForm({
-					email: "",
-				});
-			}
-			// setForm({
-			// 	email: "",
-			// });
-		}
-	};
+	// 	if (state.user.type) {
+	// 		// console.log("masuk", state);
+	// 		if (state.user.type === 1) {
+	// 			router.push("/");
+	// 			handleClose();
+	// 			setForm({
+	// 				email: "",
+	// 				password: "",
+	// 			});
+	// 		} else {
+	// 			handleClose();
+	// 			router.push("/transaction");
+	// 			setForm({
+	// 				email: "",
+	// 				password: "",
+	// 			});
+	// 		}
+	// 	}
+	// };
 
 	const handleClose = () => {
 		dispatch({
@@ -54,14 +54,39 @@ function Login(props) {
 	};
 
 	const onChange = (e) => {
-		console.log("log ".e);
 		const updateForm = { ...form };
 		updateForm[e.target.name] = e.target.value;
 		setForm(updateForm);
 	};
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// };
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		LoginUser();
+		try {
+			const body = JSON.stringify({
+			  email,
+			  password,
+			});
+	  
+			const config = {
+			  headers: {
+				"Content-Type": "application/json",
+			  },
+			};
+	  
+			const user = await API.post("/login", body, config);
+	  
+			dispatch({
+			  type: "LOGIN_SUCCESS",
+			  payload: user.data.data.user,
+			});
+	  
+			setAuthToken(user.data.data.user.token);
+	  
+			history.push("/home");
+		  } catch (error) {
+			console.log(error);
+		  }
+	};
 	// console.log("login", state);
 	return (
 		<Modal
@@ -78,9 +103,7 @@ function Login(props) {
 					<h4 className="text-yellow">Login</h4>
 				</div>
 				<div className="d-flex flex-column">
-					<Form
-					// onSubmit={(e) => handleSubmit(e)}
-					>
+					<Form onSubmit={(e) => handleSubmit(e)}>
 						<Form.Group controlId="formBasicEmail">
 							<Form.Control
 								value={form.email}
@@ -94,15 +117,18 @@ function Login(props) {
 
 						<Form.Group controlId="formBasicPassword">
 							<Form.Control
+								value={form.password}
+								onChange={(e) => onChange(e)}
 								type="password"
+								name="password"
 								className="form-control input-bg"
 								placeholder="Password"
 							/>
 						</Form.Group>
 						<Button
+							type="submit"
 							variant="brown"
 							className="btn btn-block btn-round"
-							onClick={LoginUser}
 						>
 							Login
 						</Button>

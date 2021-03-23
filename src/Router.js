@@ -63,7 +63,7 @@ function Child({ popUP }) {
 			setShow(true);
 			// console.log("popup");
 		}
-	}, [show]); //fetching data dari API
+	}, []); //fetching data dari API
 
 	return (
 		<>

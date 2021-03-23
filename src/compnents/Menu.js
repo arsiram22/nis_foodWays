@@ -35,12 +35,18 @@ export const LoginRegister = () => {
 		<div>
 			<Nav>
 				<li className="nav-link">
-					<button className="btn btn-brown btn-sm" onClick={handleOpenLogin}>
+					<button
+						className="btn btn-brown btn-nav btn-sm"
+						onClick={handleOpenLogin}
+					>
 						Login
 					</button>
 				</li>
 				<li className="nav-link">
-					<button className="btn btn-brown btn-sm" onClick={handleOpenRegister}>
+					<button
+						className="btn btn-brown btn-nav btn-sm"
+						onClick={handleOpenRegister}
+					>
 						Register
 					</button>
 				</li>
