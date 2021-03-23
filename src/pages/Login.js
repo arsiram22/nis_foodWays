@@ -15,31 +15,31 @@ function Login(props) {
 		password: "",
 	});
 
-	// const LoginUser = () => {
-	// 	dispatch({
-	// 		type: "LOGIN",
-	// 		payload: { email: form.email },
-	// 	});
+	const LoginUser = () => {
+		dispatch({
+			type: "LOGIN",
+			payload: { email: form.email },
+		});
 
-	// 	if (state.user.type) {
-	// 		// console.log("masuk", state);
-	// 		if (state.user.type === 1) {
-	// 			router.push("/");
-	// 			handleClose();
-	// 			setForm({
-	// 				email: "",
-	// 				password: "",
-	// 			});
-	// 		} else {
-	// 			handleClose();
-	// 			router.push("/transaction");
-	// 			setForm({
-	// 				email: "",
-	// 				password: "",
-	// 			});
-	// 		}
-	// 	}
-	// };
+		if (state.user.type) {
+			// console.log("masuk", state);
+			if (state.user.type === 1) {
+				router.push("/");
+				handleClose();
+				setForm({
+					email: "",
+					password: "",
+				});
+			} else {
+				handleClose();
+				router.push("/transaction");
+				setForm({
+					email: "",
+					password: "",
+				});
+			}
+		}
+	};
 
 	const handleClose = () => {
 		dispatch({
@@ -61,31 +61,6 @@ function Login(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		LoginUser();
-		try {
-			const body = JSON.stringify({
-			  email,
-			  password,
-			});
-	  
-			const config = {
-			  headers: {
-				"Content-Type": "application/json",
-			  },
-			};
-	  
-			const user = await API.post("/login", body, config);
-	  
-			dispatch({
-			  type: "LOGIN_SUCCESS",
-			  payload: user.data.data.user,
-			});
-	  
-			setAuthToken(user.data.data.user.token);
-	  
-			history.push("/home");
-		  } catch (error) {
-			console.log(error);
-		  }
 	};
 	// console.log("login", state);
 	return (
